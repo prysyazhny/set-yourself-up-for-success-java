@@ -6,9 +6,20 @@ package org.example;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class AppTest {
     @Test void appHasAGreeting() {
         App classUnderTest = new App();
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+    }
+
+    @Test void removeDuplicatesRemovesDuplicates() {
+        assertEquals(new ArrayList<>(), App.removeDuplicates(new ArrayList<>()));
+        assertEquals(new ArrayList<>(List.of(1)), App.removeDuplicates(new ArrayList<>(List.of(1))));
+        assertEquals(new ArrayList<>(List.of(1, 2, 3)), App.removeDuplicates(new ArrayList<>(List.of(1, 2, 3))));
+        assertEquals(new ArrayList<>(List.of("A", "B")), App.removeDuplicates(new ArrayList<>(List.of("A", "A", "B"))));
+        assertEquals(new ArrayList<>(List.of(1, 3, 5)), App.removeDuplicates(new ArrayList<>(List.of(1, 1, 3, 3, 5, 5))));
     }
 }
